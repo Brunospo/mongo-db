@@ -1,0 +1,20 @@
+storage.db
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Editor/IDE files
+.vscode/
+.idea/
+
+# Virtual environment
+venv/
+.env/
+
+# Other common ignored files
+.DS_Store
+
+.pytest_cache
