@@ -12,6 +12,7 @@ Pygments==2.19.2
 pylint==4.0.2
 pymongo==4.15.3
 pytest==8.4.2
+python-dotenv==1.2.1
 tomli==2.3.0
 tomlkit==0.13.3
 typing_extensions==4.15.0
