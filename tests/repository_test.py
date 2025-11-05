@@ -21,3 +21,74 @@ def test_insertlist_of_documents():
     order_repository = OrderRepository(conn)
     list_doc = [{"some": "thing", "value": 1}, {"some2": "thing2", "value": 2}]
     order_repository.insert_list_of_documents(list_doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_select_many_documents():
+    order_repository = OrderRepository(conn)
+    doc_filter = {"cupom": True}
+    response = order_repository.select_many(doc_filter)
+    print()
+    print(response)
+    for doc in response:
+        print(doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_select_one_document():
+    order_repository = OrderRepository(conn)
+    doc_filter = {"cupom": True}
+    response = order_repository.select_one(doc_filter)
+    print()
+    print(response)
+    for doc in response:
+        print(doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_select_many_with_properties():
+    order_repository = OrderRepository(conn)
+    doc_filter = {"cupom": True}
+    response = order_repository.select_many_with_properties(doc_filter)
+    print()
+    for doc in response:
+        print(doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_if_property_exists():
+    order_repository = OrderRepository(conn)
+    response = order_repository.select_if_property_exists()
+    print()
+    for doc in response:
+        print(doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_select_many_documents_with_multiple_filter():
+    order_repository = OrderRepository(conn)
+    doc_filter = {
+        "cupom": True, 
+        "itens.doce": {"$exists": True}
+        } #Semelhante a uma busca AND em SQL
+    response = order_repository.select_many(doc_filter)
+    print()
+    for doc in response:
+        print(doc)
+
+@pytest.mark.skip(reason='Interação com o banco')
+def test_select_many_documents_with_or_filter():
+    order_repository = OrderRepository(conn)
+    doc_filter = {
+        "$or": [
+            {"adress": {"$exists": True}},
+            {"itens.doce.tipo": "chocolate"}
+        ]
+        } #Semelhante a uma busca OR em SQL
+    response = order_repository.select_many(doc_filter)
+    print()
+    for doc in response:
+        print(doc)
+
+def test_select_by_object_id():
+    order_repository = OrderRepository(conn)
+    object_id = "5740h435bn493877"
+    response = order_repository.select_by_object_id(object_id)
+    print()
+    for doc in response:
+        print(doc)
