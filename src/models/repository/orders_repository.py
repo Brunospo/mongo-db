@@ -45,7 +45,7 @@ class OrderRepository:
     def edit_registry(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_one(
-            {"_id": ObjectId("95743545h59487")}, #filtros
+            {"_id": ObjectId("507f1f77bcf86cd799439011")}, #filtros
             {"$set": {"itens.pizza.quantidade": 30}} #edição
         )    
     
@@ -59,14 +59,14 @@ class OrderRepository:
     def edit_registry_with_increment(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_one(
-            {"_id": ObjectId("95743545h59487")}, #filtros
+            {"_id": ObjectId("507f1f77bcf86cd799439011")}, #filtros
             {"$inc": {"itens.pizza.quantidade": 50}} #edição
         )
     
     def delete_registry(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.delete_one(
-            {"_id": ObjectId("95743545h59487")}
+            {"_id": ObjectId("507f1f77bcf86cd799439011")}
         )
     
     def delete_many_registries(self) -> None:
