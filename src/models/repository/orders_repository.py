@@ -1,7 +1,8 @@
 from pymongo.database import Database
 from bson.objectid import ObjectId
+from .interfaces.orders_repository import OrderRepositoryInterface
 
-class OrderRepository:
+class OrderRepository(OrderRepositoryInterface):
     def __init__(self, db_connection: Database) -> None:
         self.__collection_name = 'orders'
         self.__db_connection = db_connection
