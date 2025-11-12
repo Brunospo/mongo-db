@@ -33,7 +33,7 @@ class RegistryOrder:
     def __registry_order(self, new_order: dict) -> None:
         self.__orders_repository.insert_document(new_order)
 
-    def __format_response(self) -> dict:
+    def __format_response(self) -> HttpResponse:
         return HttpResponse(
             body={
                 "data": {
