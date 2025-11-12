@@ -22,7 +22,7 @@ def test_registry_order():
     http_request = HttpRequest(body={
         "data": {
             "name": "Jhon",
-            "adress": "Main Street, Apt 4B",
+            "address": "Main Street, Apt 4B",
             "cupom": False,
             "items": [
                 {"item": "Refrigerante", "quantidade": 2},
@@ -34,7 +34,7 @@ def test_registry_order():
     response = registry_order.registry(http_request)
     
     assert "name" in repo.insert_document_att["document"]
-    assert "adress" in repo.insert_document_att["document"]
+    assert "address" in repo.insert_document_att["document"]
     assert "created_at" in repo.insert_document_att["document"]
 
     assert response.status_code == 201
@@ -48,7 +48,7 @@ def test_registry_order_error():
     http_request = HttpRequest(body={
         "data": {
             "name": "Jhon",
-            "adress": "Main Street, Apt 4B",
+            "address": "Main Street, Apt 4B",
             "cupom": False,
             "items": [
                 {"item": "Refrigerante", "quantidade": 2},
@@ -60,5 +60,4 @@ def test_registry_order_error():
     response = registry_order.registry(http_request)      
     
     assert response.status_code == 400
-    print(response.body)
-    assert str(response.body['error']) == 'Erro aqui'
+    assert response.body['error'] == 'Erro aqui'
